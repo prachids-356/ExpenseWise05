@@ -28,7 +28,7 @@ jobs:
         working-directory: ExpenseWise/backend
         run: mvn --batch-mode clean verify
 
-      - name: Verify Docker Hub credentials
+      - name: Prepare Docker Hub credentials
         if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -38,6 +38,14 @@ jobs:
             echo "::error::DOCKERHUB_USERNAME or DOCKERHUB_TOKEN is missing. Add both as repository Actions secrets."
             exit 1
           fi
+          username="$(printf '%s' "$DOCKERHUB_USERNAME" | tr -d '\r\n' | xargs)"
+          token="$(printf '%s' "$DOCKERHUB_TOKEN" | tr -d '\r\n' | xargs)"
+          if [ -z "$username" ] || [ -z "$token" ]; then
+            echo "::error::Docker Hub secrets contain no usable credentials."
+            exit 1
+          fi
+          echo "DOCKERHUB_USERNAME=$username" >> "$GITHUB_ENV"
+          echo "DOCKERHUB_TOKEN=$token" >> "$GITHUB_ENV"
 
       - name: Set up Docker Buildx
         if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
@@ -47,8 +55,8 @@ jobs:
         if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          username: ${{ env.DOCKERHUB_USERNAME }}
+          password: ${{ env.DOCKERHUB_TOKEN }}
 
       - name: Build and push backend image
         if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
@@ -57,8 +65,8 @@ jobs:
           context: ExpenseWise/backend
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/expensewise-backend:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/expensewise-backend:${{ github.sha }}
+            ${{ env.DOCKERHUB_USERNAME }}/expensewise-backend:latest
+            ${{ env.DOCKERHUB_USERNAME }}/expensewise-backend:${{ github.sha }}
 
       - name: Build and push frontend image
         if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
@@ -67,5 +75,5 @@ jobs:
           context: ExpenseWise/frontend
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/expensewise-frontend:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/expensewise-frontend:${{ github.sha }}
+            ${{ env.DOCKERHUB_USERNAME }}/expensewise-frontend:latest
+            ${{ env.DOCKERHUB_USERNAME }}/expensewise-frontend:${{ github.sha }}
