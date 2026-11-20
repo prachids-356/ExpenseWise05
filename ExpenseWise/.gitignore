@@ -1,0 +1,24 @@
+# Java / Maven
+target/
+backend/target/
+*.class
+*.jar
+*.war
+*.log
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Docker overrides
+docker-compose.override.yml
+
+# IDE / OS
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db

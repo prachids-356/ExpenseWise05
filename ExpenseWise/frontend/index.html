@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ExpenseWise | Login</title>
+
+    <!-- Pacifico Font -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+          rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================
+         NAVIGATION BAR
+    ================================== -->
+
+    <header class="navbar">
+
+        <div class="brand">
+
+            <div class="logo">
+                EW
+            </div>
+
+            <span>
+                ExpenseWise
+            </span>
+
+        </div>
+
+
+        <nav>
+
+            <a href="#">
+                Home
+            </a>
+
+            <a href="#">
+                Dashboard
+            </a>
+
+            <a href="#">
+                Reports
+            </a>
+
+            <a href="#">
+                About Us
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =================================
+         MAIN LOGIN AREA
+    ================================== -->
+
+    <main class="page">
+
+
+        <section class="login-card">
+
+
+            <!-- =================================
+                 LEFT MONEY PANEL
+            ================================== -->
+
+            <div class="welcome-panel">
+
+
+                <!-- Money Background Animation -->
+
+                <div class="money-animation">
+
+
+                    <!-- Animated Coins -->
+
+                    <span class="money coin1">
+                        $
+                    </span>
+
+                    <span class="money coin2">
+                        $
+                    </span>
+
+                    <span class="money coin3">
+                        $
+                    </span>
+
+                    <span class="money coin4">
+                        $
+                    </span>
+
+                    <span class="money coin5">
+                        $
+                    </span>
+
+                    <span class="money coin6">
+                        $
+                    </span>
+
+
+                    <!-- Currency Symbols -->
+
+                    <span class="money-symbol symbol1">
+                        ₹
+                    </span>
+
+                    <span class="money-symbol symbol2">
+                        €
+                    </span>
+
+                    <span class="money-symbol symbol3">
+                        £
+                    </span>
+
+
+                    <!-- Glowing Circles -->
+
+                    <span class="glow glow1"></span>
+
+                    <span class="glow glow2"></span>
+
+                    <span class="glow glow3"></span>
+
+
+                </div>
+
+
+
+                <!-- =================================
+                     LEFT CONTENT
+                ================================== -->
+
+                <div class="overlay">
+
+
+                    <!-- EW Logo -->
+
+                    <div class="brand-icon">
+                        EW
+                    </div>
+
+
+                    <!-- Pacifico Heading -->
+
+                    <h1>
+                        ExpenseWise
+                    </h1>
+
+
+                    <!-- Professional Tagline -->
+
+                    <p class="tagline">
+
+                        Track Your Money.
+                        <br>
+
+                        Take Control of Your Future.
+
+                    </p>
+
+
+                    <!-- Welcome -->
+
+                    <h2>
+                        Welcome Back
+                    </h2>
+
+
+                    <!-- Description -->
+
+                    <p class="subtext">
+
+                        Manage your expenses, understand
+                        your spending and make smarter
+                        financial decisions.
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================
+                 RIGHT LOGIN FORM
+            ================================== -->
+
+            <div class="form-panel">
+
+
+                <!-- Close Button -->
+
+                <button
+                    class="close-btn"
+                    type="button"
+                    id="closeButton">
+
+                    ×
+
+                </button>
+
+
+
+                <!-- Login Heading -->
+
+                <h2>
+                    LOGIN
+                </h2>
+
+
+
+                <!-- Login Form -->
+
+                <form id="loginForm">
+
+
+                    <!-- Email -->
+
+                    <label for="email">
+
+                        Email
+
+                    </label>
+
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required>
+
+
+
+                    <!-- Password -->
+
+                    <label for="password">
+
+                        Password
+
+                    </label>
+
+
+                    <div class="password-box">
+
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            required>
+
+
+                        <!-- Show Password -->
+
+                        <button
+                            type="button"
+                            id="togglePassword"
+                            aria-label="Show password">
+
+                            👁
+
+                        </button>
+
+
+                    </div>
+
+
+
+                    <!-- Forgot Password -->
+
+                    <a
+                        href="#"
+                        class="forgot">
+
+                        Forgot password?
+
+                    </a>
+
+
+
+                    <!-- Login Button -->
+
+                    <button
+                        type="submit"
+                        class="login-btn">
+
+                        Log In
+
+                    </button>
+
+
+
+                    <!-- Signup -->
+
+                    <p class="signup-text">
+
+                        Don't have an account?
+
+                        <a href="#">
+                            Sign Up
+                        </a>
+
+                    </p>
+
+
+
+                    <!-- Login Message -->
+
+                    <p
+                        id="message"
+                        class="message">
+
+                    </p>
+
+
+                </form>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- JavaScript -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
